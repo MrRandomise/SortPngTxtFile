@@ -12,3 +12,4 @@ E:\Programming\SortPngTxtFile\obj\Debug\net8.0\refint\SortPngTxtFile.dll
 E:\Programming\SortPngTxtFile\obj\Debug\net8.0\SortPngTxtFile.pdb
 E:\Programming\SortPngTxtFile\obj\Debug\net8.0\SortPngTxtFile.genruntimeconfig.cache
 E:\Programming\SortPngTxtFile\obj\Debug\net8.0\ref\SortPngTxtFile.dll
+E:\Programming\SortPngTxtFile\obj\Debug\net8.0\SortPngTxtFile.sourcelink.json

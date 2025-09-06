@@ -1,33 +1,40 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 
 class FileSorter
 {
+    static string type = ".png";
+
+    static string path = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Cards\";
+
     static void Main(string[] args)
     {
         // --- НАСТРОЙКИ ---
         // Укажите путь к исходной папке с файлами.
-        string sourceDirectory = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Valid\Images";
+
+
+        string sourceDirectory = path +"images";
 
         // Укажите путь к папке для первой группы PNG файлов.
-        string pngDestination1 = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Valid\Images\Images\train";
+        string pngDestination1 = path + @"images\train";
 
         // Укажите путь к папке для второй группы PNG файлов.
-        string pngDestination2 = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Valid\Images\Images\val";
+        string pngDestination2 = path + @"images\val";
 
         // Укажите путь к папке для первой группы TXT файлов.
-        string txtDestination1 = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Valid\labels\train";
+        string txtDestination1 = path +@"\labels\train";
 
         // Укажите путь к папке для второй группы TXT файлов.
-        string txtDestination2 = @"C:\Users\dmitr\OneDrive\Desktop\DataSet\DataSet\Valid\labels\val";
+        string txtDestination2 = path + @"\labels\val";
 
         // Задайте процент файлов, который пойдет в первую группу (например, 0.7 = 70%).
         double percentageForFirstGroup = 0.8;
 
 
-            try
+        try
             {
                 Console.WriteLine("Начало процесса сортировки и перемещения файлов...");
 
@@ -38,7 +45,7 @@ class FileSorter
                 Directory.CreateDirectory(txtDestination2);
 
                 // 2. Получаем все PNG файлы в исходной папке.
-                string[] pngFiles = Directory.GetFiles(sourceDirectory, "*.png");
+                string[] pngFiles = Directory.GetFiles(sourceDirectory, "*"+ type);
 
                 // 3. Находим совпадающие пары (PNG + TXT).
                 List<string> matchingFileBases = new List<string>();
@@ -59,7 +66,7 @@ class FileSorter
 
                 // 4. Выводим общее количество найденных пар.
                 int totalMatches = matchingFileBases.Count;
-                Console.WriteLine($"Найдено совпадающих пар (PNG + TXT): {totalMatches}");
+                Console.WriteLine($"Найдено совпадающих пар (JPG + TXT): {totalMatches}");
 
                 if (totalMatches == 0)
                 {
@@ -125,17 +132,17 @@ class FileSorter
         static void MoveFilePair(string baseName, string sourceDir, string pngDestDir, string txtDestDir)
         {
             // Формируем полные пути к исходным и целевым файлам
-            string sourcePng = Path.Combine(sourceDir, baseName + ".png");
+            string sourcePng = Path.Combine(sourceDir, baseName + type);
             string sourceTxt = Path.Combine(sourceDir, baseName + ".txt");
 
-            string destPng = Path.Combine(pngDestDir, baseName + ".png");
+            string destPng = Path.Combine(pngDestDir, baseName + type);
             string destTxt = Path.Combine(txtDestDir, baseName + ".txt");
 
             try
             {
-                // ИЗМЕНЕНИЕ: File.Copy заменен на File.Move.
-                // Третий параметр 'true' означает, что файл будет перезаписан, если он уже существует в папке назначения.
-                File.Move(sourcePng, destPng, true);
+            // ИЗМЕНЕНИЕ: File.Copy заменен на File.Move.
+            // Третий параметр 'true' означает, что файл будет перезаписан, если он уже существует в папке назначения.
+            File.Move(sourcePng, destPng, true);
                 File.Move(sourceTxt, destTxt, true);
 
                 // ИЗМЕНЕНИЕ: Обновлен текст сообщения

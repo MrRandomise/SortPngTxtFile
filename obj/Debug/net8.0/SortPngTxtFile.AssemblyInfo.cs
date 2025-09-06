@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SortPngTxtFile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d2b377ddbc4a3529f29b42db37fca09b914580a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SortPngTxtFile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SortPngTxtFile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
